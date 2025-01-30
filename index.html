@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Under Construction?🚧</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: lightgray;
+            padding: 50px;
+        }
+        .message {
+            font-size: 30px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .game-area {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        .button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .joke {
+            font-size: 20px;
+            margin-top: 20px;
+            font-style: italic;
+            color: #333;
+        }
+        .title {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-size: 45px;
+            color: #FF6347;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .input-area {
+            margin-top: 20px;
+        }
+        .input-field {
+            padding: 10px;
+            font-size: 16px;
+            width: 100px;
+            text-align: center;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .result {
+            font-size: 20px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="message">
+        <h1 class="title"> Glazination status: Ain't even begunned. 🚧</h1>
+        <p>Maybe there will be an actual webpage here eventually. Who knows? 
+        If you are one of my spawn, you may play these little games below. If you are not, go away.</p>
+    </div>
+
+    <!-- First Game: Color Change -->
+    <div class="game-area">
+        <p>While you wait, let's play a simple game!</p>
+        <p>Click the button below to change the background color:</p>
+        <button class="button" onclick="changeBackgroundColor()">Click to Change Color</button>
+    </div>
+
+    <!-- Second Game: Joke -->
+    <div class="game-area">
+        <p>Need a laugh? Here's another game:</p>
+        <p>Click the button to hear a random joke:</p>
+        <button class="button" onclick="showJoke()">Get a Joke</button>
+        <p class="joke" id="joke"></p>
+    </div>
+
+    <!-- Third Game: Number Guessing -->
+    <div class="game-area">
+        <p>Time for the third game! Let's play a Number Guessing game:</p>
+        <p>Guess a number between 1 and 10:</p>
+        <div class="input-area">
+            <input type="number" id="guess" class="input-field" min="1" max="10">
+            <button class="button" onclick="checkGuess()">Submit Guess</button>
+        </div>
+        <p class="result" id="result"></p>
+    </div>
+
+    <script>
+        // Game 1: Change Background Color
+        function changeBackgroundColor() {
+            const colors = ['#FF5733', '#33FF57', '#3357FF', '#F0E130', '#FF33A6', '#D1E8E2'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.body.style.backgroundColor = randomColor;
+        }
+
+        // Game 2: Show Random Joke
+        function showJoke() {
+            const jokes = [
+                "Why don't skeletons fight each other? They don't have the guts!",
+                "What do you get when you cross a snowman and a vampire? Frostbite!",
+                "Why did the scarecrow win an award? Because he was outstanding in his field!",
+                "I told my wife she was drawing her eyebrows too high. She looked surprised!",
+                "Why don’t oysters donate to charity? Because they’re shellfish!"
+            ];
+            const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
+            document.getElementById('joke').innerText = randomJoke;
+        }
+
+        // Game 3: Number Guessing
+        let secretNumber = Math.floor(Math.random() * 10) + 1; // Random number between 1 and 10
+
+        function checkGuess() {
+            const userGuess = parseInt(document.getElementById('guess').value);
+            const resultElement = document.getElementById('result');
+            
+            if (userGuess === secretNumber) {
+                resultElement.textContent = "🎉 Correct! Well done!";
+                resultElement.style.color = "green";
+            } else if (userGuess > secretNumber) {
+                resultElement.textContent = "Try lower!";
+                resultElement.style.color = "red";
+            } else if (userGuess < secretNumber) {
+                resultElement.textContent = "Try higher!";
+                resultElement.style.color = "red";
+            } else {
+                resultElement.textContent = "Please enter a valid number!";
+                resultElement.style.color = "orange";
+            }
+        }
+    </script>
+
+</body>
+</html>
